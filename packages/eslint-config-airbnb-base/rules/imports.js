@@ -1,14 +1,18 @@
+const globals = require('globals');
+
 module.exports = {
-  env: {
-    es6: true
+  languageOptions: {
+    globals: {
+      ...globals.es2015,
+    },
+    parserOptions: {
+      ecmaVersion: 6,
+      sourceType: 'module'
+    },
   },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module'
+  plugins: {
+    import: require('eslint-plugin-import'),
   },
-  plugins: [
-    'import'
-  ],
 
   settings: {
     'import/resolver': {

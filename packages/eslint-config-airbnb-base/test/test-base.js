@@ -8,8 +8,7 @@ const files = { ...{ index } }; // object spread is to test parsing
 
 const rulesDir = path.join(__dirname, '../rules');
 fs.readdirSync(rulesDir).forEach((name) => {
-  // eslint-disable-next-line import/no-dynamic-require
-  files[name] = require(path.join(rulesDir, name)); // eslint-disable-line global-require
+  files[name] = require(path.join(rulesDir, name));
 });
 
 Object.keys(files).forEach((
@@ -22,12 +21,12 @@ Object.keys(files).forEach((
 
     // scan plugins for react and fail if it is found
     const hasReactPlugin = Object.prototype.hasOwnProperty.call(config, 'plugins')
-      && config.plugins.indexOf('react') !== -1;
+      && 'react' in config.plugins;
     t.notOk(hasReactPlugin, 'there is no react plugin');
 
     // scan rules for react/ and fail if any exist
-    const reactRuleIds = Object.keys(config.rules)
-      .filter((ruleId) => ruleId.indexOf('react/') === 0);
+    const reactRuleIds = config.rules ? Object.keys(config.rules)
+      .filter((ruleId) => ruleId.indexOf('react/') === 0) : [];
     t.deepEquals(reactRuleIds, [], 'there are no react/ rules');
   });
 });

@@ -1,14 +1,18 @@
+const globals = require('globals');
+
 module.exports = {
-  env: {
-    es6: true
-  },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      generators: false,
-      objectLiteralDuplicateProperties: false
-    }
+  languageOptions: {
+    globals: {
+      ...globals.es2015,
+    },
+    parserOptions: {
+      ecmaVersion: 6,
+      sourceType: 'module',
+      ecmaFeatures: {
+        generators: false,
+        objectLiteralDuplicateProperties: false
+      }
+    },
   },
 
   rules: {

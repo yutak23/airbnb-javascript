@@ -1,6 +1,10 @@
+const globals = require('globals');
+
 module.exports = {
-  env: {
-    node: true
+  languageOptions: {
+    globals: {
+      ...globals.node,
+    },
   },
 
   rules: {
