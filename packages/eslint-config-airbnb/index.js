@@ -1,8 +1,10 @@
+const airbnbBase = require("../eslint-config-airbnb-base");
+const react = require("./rules/react");
+const reactA11y = require("./rules/react-a11y");
+
 module.exports = {
-  extends: [
-    'eslint-config-airbnb-base',
-    './rules/react',
-    './rules/react-a11y',
-  ].map(require.resolve),
-  rules: {}
+  ...airbnbBase,
+  ...react,
+  ...reactA11y,
+  rules: {},
 };

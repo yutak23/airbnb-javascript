@@ -1,6 +1,6 @@
+const reactHooks = require("./rules/react-hooks");
+
 module.exports = {
-  extends: [
-    './rules/react-hooks.js',
-  ].map(require.resolve),
+  ...reactHooks,
   rules: {}
 };

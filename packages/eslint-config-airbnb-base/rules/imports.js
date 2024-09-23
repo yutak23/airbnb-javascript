@@ -1,4 +1,5 @@
 const globals = require('globals');
+const eslintPluginImport = require('eslint-plugin-import');
 
 module.exports = {
   languageOptions: {
@@ -10,9 +11,9 @@ module.exports = {
       sourceType: 'module'
     },
   },
-  plugins: {
-    import: require('eslint-plugin-import'),
-  },
+  plugins: [
+    eslintPluginImport,
+  ],
 
   settings: {
     'import/resolver': {

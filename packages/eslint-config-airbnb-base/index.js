@@ -6,6 +6,7 @@ const variables = require('./rules/variables');
 const es6 = require('./rules/es6');
 const imports = require('./rules/imports');
 const strict = require('./rules/strict');
+const eslintPluginImport = require('eslint-plugin-import');
 
 module.exports = {
   ...bestPractices,
@@ -15,6 +16,7 @@ module.exports = {
   ...variables,
   ...es6,
   ...imports,
+  ...eslintPluginImport.flatConfigs.recommended,
   ...strict,
   languageOptions: {
     parserOptions: {
@@ -22,4 +24,5 @@ module.exports = {
       sourceType: 'module',
     },
   },
+  rules: {},
 };

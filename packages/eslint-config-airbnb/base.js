@@ -1,4 +1,6 @@
+const airbnbBase = require('../eslint-config-airbnb-base');
+
 module.exports = {
-  extends: ['eslint-config-airbnb-base'].map(require.resolve),
+  ...airbnbBase,
   rules: {},
 };

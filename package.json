@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npm run install:config && npm run install:config:base",
     "postinstall": "rm -rf node_modules/markdownlint-cli/node_modules/markdownlint",
-    "install:config": "cd packages/eslint-config-airbnb && npm prune && npm install",
+    "install:config": "cd packages/eslint-config-airbnb && npm prune --legacy-peer-deps && npm install --legacy-peer-deps",
     "install:config:base": "cd packages/eslint-config-airbnb-base && npm prune --legacy-peer-deps && npm install --legacy-peer-deps",
     "lint": "markdownlint --config linters/.markdownlint.json README.md */README.md",
     "pretest": "npm run --silent lint",

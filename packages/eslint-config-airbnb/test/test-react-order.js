@@ -3,6 +3,8 @@ import { CLIEngine, ESLint } from 'eslint';
 import eslintrc from '..';
 import reactRules from '../rules/react';
 import reactA11yRules from '../rules/react-a11y';
+import eslintPluginReact from 'eslint-plugin-react';
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 
 const rules = {
   // It is okay to import devDependencies in tests.
@@ -13,7 +15,6 @@ const rules = {
   'react/no-unused-class-component-methods': 0,
 };
 const cli = new (CLIEngine || ESLint)({
-  useEslintrc: false,
   baseConfig: eslintrc,
   ...(CLIEngine ? { rules } : { overrideConfig: { rules } }),
 });
@@ -38,8 +39,8 @@ ${body}}
 test('validate react methods order', (t) => {
   t.test('make sure our eslintrc has React and JSX linting dependencies', (t) => {
     t.plan(2);
-    t.deepEqual(reactRules.plugins, ['react']);
-    t.deepEqual(reactA11yRules.plugins, ['jsx-a11y', 'react']);
+    t.deepEqual(reactRules.plugins, { react: eslintPluginReact });
+    t.deepEqual(reactA11yRules.plugins, { react: eslintPluginReact, 'jsx-a11y': eslintPluginJsxA11y });
   });
 
   t.test('passes a good component', async (t) => {

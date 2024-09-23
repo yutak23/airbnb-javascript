@@ -12,7 +12,6 @@ fs.readdirSync(rulesDir).forEach((name) => {
     return;
   }
 
-  // eslint-disable-next-line import/no-dynamic-require
   files[name] = require(path.join(rulesDir, name)); // eslint-disable-line global-require
 });
 
@@ -24,7 +23,7 @@ Object.keys(files).forEach((name) => {
 
     // scan plugins for react and fail if it is found
     const hasReactPlugin = Object.prototype.hasOwnProperty.call(config, 'plugins')
-      && config.plugins.indexOf('react') !== -1;
+      && 'react' in config.plugins;
     t.notOk(hasReactPlugin, 'there is no react plugin');
 
     // scan rules for react/ and fail if any exist

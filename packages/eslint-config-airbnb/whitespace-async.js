@@ -22,7 +22,6 @@ function getSeverity(ruleConfig) {
 async function onlyErrorOnRules(rulesToError, config) {
   const errorsOnly = { ...config };
   const cli = new ESLint({
-    useEslintrc: false,
     baseConfig: config
   });
   const baseRules = (await cli.calculateConfigForFile(require.resolve('./'))).rules;
@@ -46,4 +45,17 @@ async function onlyErrorOnRules(rulesToError, config) {
   return errorsOnly;
 }
 
-onlyErrorOnRules(whitespaceRules, baseConfig).then((config) => console.log(JSON.stringify(config)));
+function safeStringify(obj) {
+  const seen = new WeakSet();
+  return JSON.stringify(obj, (key, value) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return; // 循環参照を無視
+      }
+      seen.add(value);
+    }
+    return value;
+  });
+}
+
+onlyErrorOnRules(whitespaceRules, baseConfig).then((config) => console.log(safeStringify(config)));

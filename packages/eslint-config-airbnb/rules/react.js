@@ -1,15 +1,18 @@
 const baseStyleRules = require('eslint-config-airbnb-base/rules/style').rules;
+const react = require('eslint-plugin-react');
 
 const dangleRules = baseStyleRules['no-underscore-dangle'];
 
 module.exports = {
-  plugins: [
-    'react',
-  ],
+  plugins: {
+    react,
+  },
 
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  languageOptions:{
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 

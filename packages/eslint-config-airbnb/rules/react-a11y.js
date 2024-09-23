@@ -1,12 +1,17 @@
-module.exports = {
-  plugins: [
-    'jsx-a11y',
-    'react'
-  ],
+const react = require('eslint-plugin-react');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
 
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+module.exports = {
+  plugins: {
+    react,
+    'jsx-a11y': jsxA11y,
+  },
+
+  languageOptions: {
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 
