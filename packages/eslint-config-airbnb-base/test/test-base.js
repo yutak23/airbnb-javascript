@@ -8,7 +8,8 @@ const files = { ...{ index } }; // object spread is to test parsing
 
 const rulesDir = path.join(__dirname, '../rules');
 fs.readdirSync(rulesDir).forEach((name) => {
-  files[name] = require(path.join(rulesDir, name));
+  // eslint-disable-next-line global-require
+  files[name] = require(path.join(rulesDir, name)); // eslint-disable-line import/no-dynamic-require
 });
 
 Object.keys(files).forEach((

@@ -1,4 +1,5 @@
 const globals = require('globals');
+const { fixupPluginRules } = require('@eslint/compat');
 const eslintPluginImport = require('eslint-plugin-import');
 
 module.exports = {
@@ -11,9 +12,9 @@ module.exports = {
       sourceType: 'module'
     },
   },
-  plugins: [
-    eslintPluginImport,
-  ],
+  plugins: {
+    import: fixupPluginRules(eslintPluginImport),
+  },
 
   settings: {
     'import/resolver': {

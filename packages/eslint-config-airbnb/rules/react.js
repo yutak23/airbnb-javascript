@@ -8,7 +8,7 @@ module.exports = {
     react,
   },
 
-  languageOptions:{
+  languageOptions: {
     parserOptions: {
       ecmaFeatures: {
         jsx: true,

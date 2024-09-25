@@ -12,6 +12,7 @@ fs.readdirSync(rulesDir).forEach((name) => {
     return;
   }
 
+  // eslint-disable-next-line import/no-dynamic-require
   files[name] = require(path.join(rulesDir, name)); // eslint-disable-line global-require
 });
 
