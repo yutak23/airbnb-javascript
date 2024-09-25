@@ -45,7 +45,7 @@ jobs:
           before_install: cd "packages/${{ matrix.package }}"
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" --legacy-peer-deps
       - run: node -pe "require('eslint/package.json').version"
         name: "eslint version"
       - run: npm run travis
@@ -79,10 +79,10 @@ jobs:
           before_install: cd "packages/${{ matrix.package }}"
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" --legacy-peer-deps
       - run: node -pe "require('eslint/package.json').version"
         name: "eslint version"
-      - run: npm install --no-save "eslint-plugin-react-hooks@${{ matrix.react-hooks }}"
+      - run: npm install --no-save "eslint-plugin-react-hooks@${{ matrix.react-hooks }}" --legacy-peer-deps
         if: ${{ matrix.react-hooks > 0}}
       - run: npm run travis
       - uses: codecov/codecov-action@v2
@@ -110,7 +110,7 @@ jobs:
           before_install: cd "packages/${{ matrix.package }}"
           node-version: lts/*
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" --legacy-peer-deps
       - run: node -pe "require('eslint/package.json').version"
         name: "eslint version"
       - run: npm run pretravis
@@ -142,8 +142,8 @@ jobs:
           before_install: cd "packages/${{ matrix.package }}"
           node-version: lts/*
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}"
-      - run: npm install --no-save "eslint-plugin-react-hooks@${{ matrix.react-hooks }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" --legacy-peer-deps
+      - run: npm install --no-save "eslint-plugin-react-hooks@${{ matrix.react-hooks }}" --legacy-peer-deps
         if: ${{ matrix.react-hooks > 0}}
       - run: node -pe "require('eslint/package.json').version"
         name: "eslint version"
