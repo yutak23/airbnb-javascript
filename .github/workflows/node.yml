@@ -42,6 +42,7 @@ jobs:
       - uses: ljharb/actions/node/install@main
         name: "nvm install ${{ matrix.node-version }} && npm install"
         with:
+          skip-install: true
           before_install: cd "packages/${{ matrix.package }}"
           node-version: ${{ matrix.node-version }}
           after_install: |
